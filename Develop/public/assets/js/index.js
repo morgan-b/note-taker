@@ -12,11 +12,11 @@ const PORT = process.env.PORT || 3001;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-require('./routes/apiRoutes.js')(app);
-require('./routes/htmlRoutes.js')(app);
+require('../routes/htmlRoutes.js')(app);
+require('../routes/apiRoutes.js')(app);
 
-
-
+app.get("/", (req, res) => res.sendFile(path.join(__dirname, "Develop/public/index.html")));
+app.get("/notes", (req, res) => res.sendFile(path.join(__dirname, "Develop/public/notes.html")));
 
 
 if (window.location.pathname === '/notes') {
